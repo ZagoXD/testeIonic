@@ -1,8 +1,8 @@
 {
     "apps": [
       {
-        "directory": "meuAppVue",
-        "appId": "841b28c3"
+        "directory": ".",
+        "appId": "app_841b28c3"
       }
     ]
   }
