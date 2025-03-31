@@ -1,0 +1,27 @@
+workflows:
+  ionic-capacitor-android:
+    name: Build Ionic Capacitor Android app
+    max_build_duration: 30
+    environment:
+      vars:
+        PROJECT_DIR: "meuAppVue"
+      node: 20.8.0
+    scripts:
+      - name: Install dependencies
+        script: |
+          cd $PROJECT_DIR
+          npm install
+      - name: Build web app
+        script: |
+          cd $PROJECT_DIR
+          npm run build
+      - name: Sync Capacitor
+        script: |
+          cd $PROJECT_DIR
+          npx cap sync android
+      - name: Build Android APK
+        script: |
+          cd $PROJECT_DIR/android
+          ./gradlew assembleRelease
+    artifacts:
+      - meuAppVue/android/app/build/outputs/**/*.apk
